@@ -1,0 +1,29 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const HomePage = () => {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/articles')
+      .then(response => setArticles(response.data))
+      .catch(error => console.error(error));
+  }, []);
+
+  return (
+    <div className="home-page">
+      <h1>Latest News</h1>
+      <div className="articles">
+        {articles.map(article => (
+          <div className="article-preview" key={article._id}>
+            <img src={article.image} alt={article.title} />
+            <h2>{article.title}</h2>
+            <p>{article.content.slice(0, 100)}...</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default HomePage;
