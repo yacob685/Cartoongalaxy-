@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>غوكو وبيكولو ضد راديتس — Dep3 | Cartoon Galaxy</title>
+  <meta name="description" content="شاهد الحلقة الثانية من دراغون بول: مهمة الإمبراطور بيلاف مع الترجمة العربية على Cartoon Galaxy." />
+  <meta name="keywords" content="Dragon Ball, دراغون بول, الحلقة الثانية, أنمي, كرتون, فيديو" />
+  <meta name="author" content="Cartoon Galaxy" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #0a1b2a 0%, #112f4a 100%);
+      color: #e0e6f0;
+      min-height: 100vh;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 1.5rem 3rem;
+    }
+    /* Navbar */
+    header {
+      background: rgba(10, 27, 42, 0.9);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      max-width: 1200px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 59, 59, 0.3);
+      margin-bottom: 2rem;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo a {
+      color: #ff3b3b;
+      font-size: 1.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-shadow: 0 0 8px #ff3b3b;
+      font-family: 'Nunito', sans-serif;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.7rem;
+    }
+    nav a {
+      color: #cfd8f7;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    }
+    nav a:hover {
+      color: #ff3b3b;
+      text-shadow: 0 0 12px #ff3b3b;
+    }
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      position: absolute;
+      top: 110%;
+      left: 0;
+      background: #1a2a52;
+      width: 650px;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(255, 59, 59, 0.4);
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem 1rem;
+      z-index: 10;
+      pointer-events: auto;
+    }
+    .dropdown:hover .dropdown-content {
+      display: grid;
+    }
+    .dropdown-content a {
+      color: #e0e6f0;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.5rem 0.7rem;
+      border-radius: 6px;
+      background: rgba(255, 59, 59, 0.15);
+      transition: background 0.3s, box-shadow 0.3s;
+      text-align: center;
+      box-shadow: 0 0 4px rgba(255, 59, 59, 0.4);
+    }
+    .dropdown-content a:hover {
+      background: #ff3b3b;
+      box-shadow: 0 0 15px #ff3b3b;
+      color: #fff;
+    }
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .video-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative; /* for settings button placement */
+    }
+    .video-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #ff3b3b;
+      text-shadow: 0 0 10px #ff3b3b;
+      margin-bottom: 1rem;
+      text-align: center;
+      letter-spacing: 1.5px;
+    }
+    video {
+      width: 100%;
+      border-radius: 15px;
+      background: black;
+      outline: none;
+      box-shadow: 0 0 25px rgba(255, 59, 59, 0.7);
+      display: block;
+    }
+    .video-description {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #d1d9efcc;
+      text-align: right;
+      line-height: 1.5;
+      text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+    }
+    .video-description strong {
+      color: white;
+    }
+    .controls {
+      margin-top: 1rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .progress-container {
+      flex-grow: 1;
+      position: relative;
+      height: 8px;
+      background: rgba(255, 59, 59, 0.3);
+      border-radius: 4px;
+      cursor: pointer;
+      direction: ltr;
+      max-width: 600px;
+    }
+    .progress {
+      background: #ff3b3b;
+      height: 100%;
+      width: 0%;
+      border-radius: 4px;
+      transition: width 0.2s linear;
+    }
+    button {
+      background: #ff3b3b;
+      border: none;
+      color: white;
+      font-weight: 700;
+      padding: 1rem 1.3rem;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 12px #ff3b3bcc;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    button:hover,
+    button:focus-visible {
+      background: #ff6060;
+      box-shadow: 0 0 25px #ff6060cc;
+      outline: none;
+    }
+    .time {
+      font-size: 0.9rem;
+      width: 90px;
+      color: #e0e6f0;
+      text-align: center;
+      user-select: none;
+      font-weight: 600;
+    }
+    .watch-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: #ff3b3b;
+      color: #fff;
+      padding: 0.6rem 1.3rem;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 0 12px #ff3b3bcc;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      text-align: center;
+    }
+    .watch-link:hover,
+    .watch-link:focus-visible {
+      background: #ff6060;
+      box-shadow: 0 0 25px #ff6060cc;
+      outline: none;
+    }
+    /* Favorite / Watch Later buttons */
+    .episode-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      border: 2px solid #ffb000;
+      background: transparent;
+      color: #ffb000;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+    }
+    .action[aria-pressed="true"] {
+      background: #ffb000;
+      color: #222;
+    }
+    .action .ico {
+      font-size: 1.1rem;
+    }
+
+    /* Settings button & panel */
+    .settings-btn {
+      position: absolute;
+      top: 12px;
+      left: 12px; /* visually sits on left (in LTR would be right) — chosen to avoid covering logo */
+      background: rgba(255, 59, 59, 0.12);
+      color: #ff3b3b;
+      border: 1px solid rgba(255,59,59,0.18);
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
+    .settings-panel {
+      position: absolute;
+      top: 64px;
+      left: 12px;
+      width: 220px;
+      background: linear-gradient(180deg,#0e2033 0%, #132a45 100%);
+      border-radius: 10px;
+      padding: 0.8rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      display: none;
+      z-index: 50;
+    }
+    .settings-panel label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+      color: #dbe6ff;
+      font-size: 0.95rem;
+    }
+    .settings-panel .small {
+      font-size: 0.85rem;
+      color: #b9c8e8;
+      margin-top: 0.4rem;
+    }
+    .settings-panel .report {
+      margin-top: 0.5rem;
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 8px;
+      background: rgba(255, 59, 59, 0.12);
+      color: #ffb3b3;
+      border: 1px solid rgba(255,59,59,0.08);
+      font-weight: 800;
+    }
+/* Cinema overlay fills whole screen */
+.cinema-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 10, 12, 0.95);
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* center content vertically */
+  align-items: center;     /* center content horizontally */
+  padding: 0;             /* remove padding for full screen */
+}
+
+/* Inner container to control width and max height */
+.cinema-inner {
+  width: min(1100px, 95%);
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  /* We'll let video grow and controls stay at bottom */
+  position: relative;
+}
+
+/* take the close button out of the flow so it doesn't push content */
+.cinema-close {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  align-self: initial;      /* stop flex alignment from affecting position */
+  margin: 0;                /* remove any margin it may have */
+  z-index: 10001;           /* stay above overlay/controls */
+  background: transparent;  /* keep your styles */
+}
+
+/* move only the embedded video up (safer than moving whole wrapper) */
+.cinema-content-wrapper iframe,
+.cinema-content-wrapper video,
+.cinema-content-wrapper .video-embed { /* add your specific class if needed */
+  transform: translateY(-30px);      /* adjust amount as needed */
+  will-change: transform;
+  transition: transform 180ms ease;
+  max-width: 100%;
+  display: block;
+}
+
+/* if something else has higher specificity, force it (use sparingly) */
+.cinema-content-wrapper iframe,
+.cinema-content-wrapper video {
+  transform: translateY(-30px) !important;
+}
+
+
+/* When cinema mode is ON, fix controls & description */
+.cinema-mode-on .controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height:40px;
+  margin-bottom:38.5px;
+  background: rgba(8, 10, 12, 0.95);
+  padding: 0.5rem 0.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 9999;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+    @media (max-width: 768px) {
+      .video-title { font-size: 1.6rem; }
+      .video-description { font-size: 1rem; }
+      .controls { flex-direction: column; gap: 0.8rem; }
+      .episode-actions { justify-content: center; }
+      .progress-container { max-width: 100%; }
+      .settings-panel { left: 8px; top: 58px; width: 180px; }
+      .settings-btn { width: 40px; height: 40px; top: 10px; left: 10px; }
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 20px;
+      background: #222;
+      color: #fff;
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 9999;
+      user-select: none;
+    }
+    .toast.show { opacity: 1; }
+    
+    
+
+    
+/* Position prev/next buttons at video edges */
+.episode-actions {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+}
+
+#prevBtn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#nextBtn {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+    
+        .nav-btn {
+  display: inline-block;
+  background: #ff3b3b;
+  color: #fff;
+  padding: 0.55rem 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 0 12px rgba(255,59,59,0.35);
+  margin: 0.6rem 0.4rem;
+}
+.nav-btn:hover { background: #ff6060; }
+
+
+  /* Settings button & panel */
+    .settings-btn {
+      position: absolute;
+      top: 12px;
+      left: 12px; /* visually sits on left (in LTR would be right) — chosen to avoid covering logo */
+      background: rgba(255, 59, 59, 0.12);
+      color: #ff3b3b;
+      border: 1px solid rgba(255,59,59,0.18);
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
+    .settings-panel {
+      position: absolute;
+      top: 64px;
+      left: 12px;
+      width: 220px;
+      background: linear-gradient(180deg,#0e2033 0%, #132a45 100%);
+      border-radius: 10px;
+      padding: 0.8rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      display: none;
+      z-index: 50;
+    }
+    .settings-panel label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+      color: #dbe6ff;
+      font-size: 0.95rem;
+    }
+    .settings-panel .small {
+      font-size: 0.85rem;
+      color: #b9c8e8;
+      margin-top: 0.4rem;
+    }
+    .settings-panel .report {
+      margin-top: 0.5rem;
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 8px;
+      background: rgba(255, 59, 59, 0.12);
+      color: #ffb3b3;
+      border: 1px solid rgba(255,59,59,0.08);
+      font-weight: 800;
+    }
+
+    /* Cinema overlay */
+    .cinema-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(8,10,12,0.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9998;
+      padding: 2rem;
+    }
+    .cinema-inner {
+      width: min(1500px, 100%);
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom:100px;
+    }
+/* hide/show animation for the close button */
+.cinema-close.toggle-hidden {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.cinema-toast {
+  position: absolute;
+  top: 2.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+  z-index: 10004;
+  opacity: 1;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.cinema-mode-on .controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height:30px;
+  margin-bottom:45px;
+  background: rgba(8, 10, 12, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 9999;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+    @media (max-width: 768px) {
+      .video-title { font-size: 1.6rem; }
+      .video-description { font-size: 1rem; }
+      .controls { flex-direction: column; gap: 0.8rem; }
+      .episode-actions { justify-content: center; }
+      .progress-container { max-width: 100%; }
+      .settings-panel { left: 8px; top: 58px; width: 180px; }
+      .settings-btn { width: 40px; height: 40px; top: 10px; left: 10px; }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <a href="new.html">Cartoon Galaxy</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="new.html">الرئيسية</a></li>
+          <li class="dropdown">
+            <a href="#">الرسوم المتحركة وأنمي</a>
+            <div class="dropdown-content">
+              <a href="Dragonball.html">دراغون بول</a>
+              <a href="mystery.html">فريق الغموض</a>
+              <a href="hero.html">مدينة الأبطال</a>
+              <a href="Conan.html">المحقق كونان</a>
+              <a href="naruto.html">ناروتو</a>
+              <a href="one-piece.html">ون بيس</a>
+              <a href="attackontitan.html">هجوم العمالقة</a>
+              <a href="fullmetal.html">الكيميائي المعدني الكامل</a>
+              <a href="deathnote.html">مذكرة الموت</a>
+              <a href="bleach.html">بليتش</a>
+              <a href="demonslayer.html">قاتل الشياطين</a>
+              <a href="mha.html">أكاديمية بطلي</a>
+              <a href="jojo.html">مغامرة جوجو الغريبة</a>
+              <a href="spiritedaway.html">الرحلة الروحية</a>
+              <a href="ghibli.html">استوديو غيبلي الكلاسيكي</a>
+              <a href="spongebob.html">سبونجبوب سكوير بانتس</a>
+              <a href="simpsons.html">عائلة سمبسون</a>
+              <a href="tomjerry.html">توم وجيري</a>
+              <a href="looneytunes.html">لوني تونز</a>
+              <a href="pokemon.html">بوكيمون (كرتون)</a>
+              <a href="teentitans.html">تيين تيتانز جو!</a>
+              <a href="adventuretime.html">وقت المغامرة</a>
+            </div>
+          </li>
+          <li><a href="#newsletter">النشرة الإخبارية</a></li>
+          <li><a href="login.html">تسجيل الدخول</a></li>
+          <li><a href="signup.html">إنشاء حساب</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main role="main">
+    <div class="video-container">
+      
+      
+            <button class="settings-btn" id="settingsBtn" aria-label="إعدادات الحلقة">⚙️</button>
+
+      <div class="settings-panel" id="settingsPanel" role="region" aria-hidden="true">
+        <label for="autoNext">
+          تمرير الحلقات تلقائيًا
+          <input type="checkbox" id="autoNext" />
+        </label>
+        <label for="cinemaMode">
+          الوضع السينمائي
+          <input type="checkbox" id="cinemaMode" />
+        </label>
+        <div class="small">※ يمكنك إيقاف/تشغيل الخيارات في أي وقت.</div>
+        <button class="report" id="reportBtn" title="الإبلاغ عن مشكلة">الإبلاغ عن مشكلة</button>
+      </div>
+
+      <div class="video-title"><strong style="color:white;">الحلقة الثالثة:</strong> غوكو وبيكولو ضد راديتس</div>
+
+
+
+      <!-- video element -->
+      <video id="player" preload="metadata" tabindex="0" aria-label="مشغل فيديو الحلقة الثانية" src="Dep3.mp4"></video>
+
+      <!-- controls -->
+      <div class="controls">
+        <button id="btnFullscreen" aria-label="تبديل ملء الشاشة">⛶</button>
+        <div class="time" id="timeDisplay">00:00 / 00:00</div>
+        <div
+          class="progress-container"
+          id="progressContainer"
+          tabindex="0"
+          role="slider"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div class="progress" id="progress"></div>
+        </div>
+        <button id="btnMute" aria-label="كتم الصوت">🔊</button>
+        <button id="btnPlayPause" aria-label="تشغيل/إيقاف الفيديو">▶️</button>
+        <!-- Previous button: ضعها بعد .episode-actions -->
+
+      </div>
+
+<div class="video-description">
+  <strong>الوصف:</strong> يتحد غوكو مع بيكولو لمواجهة راديتس في معركة مصيرية. يستخدم بيكولو تقنيته القاتلة بينما يضحي غوكو بنفسه لإنقاذ الأرض.
+</div>
+
+<div class="episode-actions" aria-label="خيارات الحلقة">
+  <a href="Dep2.html" id="prevBtn" class="nav-btn" title="الحلقة السابقة"> الحلقة السابقة</a>
+
+  <button
+    id="favBtn"
+    class="action"
+    aria-pressed="false"
+    title="أضف إلى المفضلات"
+    aria-label="أضف إلى المفضلات"
+  >
+    <span class="ico" id="favIco">☆</span> <span>مفضلة</span>
+  </button>
+
+  <button
+    id="wlBtn"
+    class="action"
+    aria-pressed="false"
+    title="أضف إلى المشاهدة لاحقًا"
+    aria-label="أضف إلى المشاهدة لاحقًا"
+  >
+    <span class="ico" id="wlIco">⏱</span> <span>لاحقًا</span>
+  </button>
+
+  <a href="Dep4.html" id="nextBtn" class="nav-btn" title="الحلقة التالية">الحلقة التالية</a>
+</div>
+
+      <a href="Dragonball.html" class="watch-link">عودة إلى قائمة الحلقات</a>
+    </div>
+  </main>
+
+  <!-- toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Elements ---
+  const video = document.getElementById('player');
+  const playPauseBtn = document.getElementById('btnPlayPause');
+  const muteBtn = document.getElementById('btnMute');
+  const fullscreenBtn = document.getElementById('btnFullscreen');
+  const progressContainer = document.getElementById('progressContainer');
+  const progress = document.getElementById('progress');
+  const timeDisplay = document.getElementById('timeDisplay');
+
+  const favBtn = document.getElementById('favBtn');
+  const wlBtn = document.getElementById('wlBtn');
+  const favIco = document.getElementById('favIco');
+  const wlIco = document.getElementById('wlIco');
+  const toast = document.getElementById('toast');
+
+  const settingsBtn = document.getElementById('settingsBtn');
+  const settingsPanel = document.getElementById('settingsPanel');
+  const autoNextCheckbox = document.getElementById('autoNext');
+  const cinemaCheckbox = document.getElementById('cinemaMode');
+  const reportBtn = document.getElementById('reportBtn');
+
+  const nextBtn = document.getElementById('nextBtn');
+  const prevBtn = document.getElementById('prevBtn');
+
+  // Defensive: if some required element missing, exit gracefully
+  if (!video) return console.warn('Video element not found (player) — aborting script.');
+
+  // --- Helpers ---
+  function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60) || 0;
+    const secs = Math.floor(seconds % 60) || 0;
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  }
+
+  function showToast(msg, ms = 1400) {
+    if (!toast) return;
+    if (toast._timer) clearTimeout(toast._timer);
+    toast.textContent = msg;
+    toast.classList.add('show');
+    toast._timer = setTimeout(() => toast.classList.remove('show'), ms);
+  }
+
+  // --- Storage utilities ---
+  const FAV_KEY = 'cb_favorites';
+  const WL_KEY = 'cb_watchlater';
+
+  function readStorage(key) {
+    try {
+      return JSON.parse(localStorage.getItem(key) || '[]');
+    } catch (e) {
+      return [];
+    }
+  }
+  function writeStorage(key, arr) {
+    try {
+      localStorage.setItem(key, JSON.stringify(arr));
+    } catch (e) { /* ignore */ }
+  }
+  function inList(key, id) {
+    return readStorage(key).some(i => i.id === id);
+  }
+  function addToList(key, item) {
+    const arr = readStorage(key);
+    if (arr.some(i => i.id === item.id)) return false;
+    arr.push(item);
+    writeStorage(key, arr);
+    return true;
+  }
+  function removeFromList(key, id) {
+    const arr = readStorage(key).filter(i => i.id !== id);
+    writeStorage(key, arr);
+    return true;
+  }
+  function toggleList(key, item) {
+    if (inList(key, item.id)) {
+      removeFromList(key, item.id);
+      return false;
+    } else {
+      addToList(key, item);
+      return true;
+    }
+  }
+
+  // --- Episode metadata ---
+  const EP = window.EP || {};
+  EP.id = EP.id || 'ep3';
+  EP.title = EP.title || 'غوكو وبيكولو ضد راديتس';
+  EP.link = EP.link || window.location.href;
+  EP.next = EP.next || 'Dep2.html';
+  EP.prev = EP.prev || 'Dep4.html';
+  window.EP = EP; // expose
+
+  // --- Update favorite/watchlater buttons UI ---
+  function updateButtons() {
+    if (favBtn && favIco) {
+      const favActive = inList(FAV_KEY, EP.id);
+      favBtn.setAttribute('aria-pressed', String(favActive));
+      favIco.textContent = favActive ? '★' : '☆';
+    }
+    if (wlBtn && wlIco) {
+      const wlActive = inList(WL_KEY, EP.id);
+      wlBtn.setAttribute('aria-pressed', String(wlActive));
+      wlIco.textContent = wlActive ? '✔' : '⏱';
+    }
+  }
+
+  // --- Video control listeners ---
+  video.addEventListener('timeupdate', () => {
+    const current = video.currentTime || 0;
+    const duration = video.duration || 0;
+    const percent = duration ? (current / duration) * 100 : 0;
+    if (progress) progress.style.width = percent + '%';
+    if (progressContainer) progressContainer.setAttribute('aria-valuenow', Math.floor(percent));
+    if (timeDisplay) timeDisplay.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
+  });
+
+  if (playPauseBtn) {
+    playPauseBtn.addEventListener('click', () => {
+      if (video.paused || video.ended) {
+        video.play();
+        playPauseBtn.textContent = '⏸️';
+        playPauseBtn.setAttribute('aria-label', 'إيقاف الفيديو');
+      } else {
+        video.pause();
+        playPauseBtn.textContent = '▶️';
+        playPauseBtn.setAttribute('aria-label', 'تشغيل الفيديو');
+      }
+    });
+  }
+
+  // ended handler (single)
+  video.addEventListener('ended', () => {
+    if (playPauseBtn) {
+      playPauseBtn.textContent = '▶️';
+      playPauseBtn.setAttribute('aria-label', 'تشغيل الفيديو');
+    }
+    if (autoNextCheckbox && autoNextCheckbox.checked && EP.next) {
+      window.location.href = EP.next;
+    }
+  });
+
+  if (progressContainer) {
+    progressContainer.addEventListener('click', (e) => {
+      const rect = progressContainer.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width || 1;
+      if (!video.duration) return;
+      const newTime = (clickX / width) * video.duration;
+      video.currentTime = newTime;
+    });
+  }
+
+  if (muteBtn) {
+    muteBtn.addEventListener('click', () => {
+      video.muted = !video.muted;
+      muteBtn.textContent = video.muted ? '🔇' : '🔊';
+      muteBtn.setAttribute('aria-label', video.muted ? 'تشغيل الصوت' : 'كتم الصوت');
+    });
+  }
+
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        // request fullscreen on container if available, else video
+        const container = document.querySelector('.video-container') || video;
+        (container.requestFullscreen ? container.requestFullscreen() : video.requestFullscreen())
+          .catch(err => alert(`فشل تفعيل وضع ملء الشاشة: ${err?.message || err}`));
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  }
+
+  video.addEventListener('contextmenu', (e) => e.preventDefault());
+
+  // --- Favorite / Watch Later handlers ---
+  if (favBtn) {
+    favBtn.addEventListener('click', () => {
+      const added = toggleList(FAV_KEY, { id: EP.id, title: EP.title, link: EP.link });
+      updateButtons();
+      showToast(added ? 'أضيفت إلى المفضلات' : 'تمت الإزالة من المفضلات');
+    });
+  }
+  if (wlBtn) {
+    wlBtn.addEventListener('click', () => {
+      const added = toggleList(WL_KEY, { id: EP.id, title: EP.title, link: EP.link });
+      updateButtons();
+      showToast(added ? 'أضيفت إلى المشاهدة لاحقًا' : 'تمت الإزالة من قائمة المشاهدة');
+    });
+  }
+
+  // initialize buttons state
+  updateButtons();
+
+  // --- Settings panel toggle ---
+  if (settingsBtn && settingsPanel) {
+    settingsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const visible = settingsPanel.style.display === 'block';
+      settingsPanel.style.display = visible ? 'none' : 'block';
+      settingsPanel.setAttribute('aria-hidden', visible ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (!settingsPanel.contains(e.target) && e.target !== settingsBtn) {
+        settingsPanel.style.display = 'none';
+        settingsPanel.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
+
+  if (reportBtn) {
+    reportBtn.addEventListener('click', () => {
+      alert('صفحة الإبلاغ غير متوفرة حالياً.\n\nمعلومة للحالة: ' + EP.title);
+    });
+  }
+
+  // --- Cinema mode (single clean implementation) ---
+  let cinemaOverlay = null;
+  let originalVideoParent = null;
+  let originalVideoNextSibling = null;
+  let keyHandlers = [];
+
+  function cleanupCinema() {
+    // remove key handlers
+    keyHandlers.forEach(({ type, fn }) => document.removeEventListener(type, fn));
+    keyHandlers = [];
+
+    // restore video position
+    if (originalVideoParent) {
+      if (originalVideoNextSibling && originalVideoNextSibling.parentNode === originalVideoParent) {
+        originalVideoParent.insertBefore(video, originalVideoNextSibling);
+      } else {
+        originalVideoParent.appendChild(video);
+      }
+    } else {
+      // fallback: put before controls
+      const container = document.querySelector('.video-container');
+      const controlsEl = document.querySelector('.controls');
+      if (container && controlsEl) container.insertBefore(video, controlsEl);
+    }
+
+    if (cinemaOverlay && cinemaOverlay.parentNode) cinemaOverlay.remove();
+    cinemaOverlay = null;
+    document.body.classList.remove('cinema-mode-on');
+  }
+
+  if (cinemaCheckbox) {
+    cinemaCheckbox.addEventListener('change', () => {
+      if (cinemaCheckbox.checked) {
+        // cache original
+        originalVideoParent = video.parentNode;
+        originalVideoNextSibling = video.nextSibling;
+
+        // build overlay
+        cinemaOverlay = document.createElement('div');
+        cinemaOverlay.className = 'cinema-overlay';
+        cinemaOverlay.id = 'cinemaOverlay';
+
+        const inner = document.createElement('div');
+        inner.className = 'cinema-inner';
+        inner.style.position = 'relative';
+
+        // close button
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'cinema-close';
+        closeBtn.textContent = '✕ إغلاق الوضع السينمائي';
+        closeBtn.addEventListener('click', () => {
+          cinemaCheckbox.checked = false;
+          cleanupCinema();
+        });
+
+        inner.appendChild(closeBtn);
+        inner.appendChild(video);
+
+        // small toast and toggle hint
+        const toastEl = document.createElement('div');
+        toastEl.className = 'cinema-toast';
+        toastEl.setAttribute('role', 'status');
+        toastEl.setAttribute('aria-live', 'polite');
+        toastEl.textContent = 'اضغط D لإخفاء زر الإغلاق، واضغطه مرة أخرى لإظهاره';
+        inner.appendChild(toastEl);
+
+        cinemaOverlay.appendChild(inner);
+        document.body.appendChild(cinemaOverlay);
+        document.body.classList.add('cinema-mode-on');
+        video.focus();
+
+        // D key toggles closeBtn visibility
+        const dKeyHandler = (e) => {
+          if (e.key && e.key.toLowerCase() === 'd') {
+            closeBtn.classList.toggle('toggle-hidden');
+          }
+        };
+        document.addEventListener('keydown', dKeyHandler);
+        keyHandlers.push({ type: 'keydown', fn: dKeyHandler });
+
+        // Arrow navigation (left -> prev, right -> next)
+        const arrowsHandler = (e) => {
+          if (e.key === 'ArrowLeft' && EP.prev) {
+            window.location.href = EP.prev;
+          } else if (e.key === 'ArrowRight' && EP.next) {
+            window.location.href = EP.next;
+          }
+        };
+        document.addEventListener('keydown', arrowsHandler);
+        keyHandlers.push({ type: 'keydown', fn: arrowsHandler });
+
+        // remove toast after 5s
+        setTimeout(() => {
+          if (toastEl && toastEl.parentNode) toastEl.remove();
+        }, 5000);
+
+      } else {
+        cleanupCinema();
+      }
+    });
+  }
+
+  // --- next / prev buttons ---
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (EP.next) window.location.href = EP.next;
+    });
+  }
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (EP.prev) window.location.href = EP.prev;
+    });
+  }
+
+  // finished init
+}); // DOMContentLoaded
+</script>
+
+</body>
+</html>

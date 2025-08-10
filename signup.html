@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إنشاء حساب</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<style>/* Base style from your site */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(135deg, #0a1b2a 0%, #112f4a 100%);
+  color: #e0e6f0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+/* Signup container */
+.signup-container {
+  background: rgba(20, 45, 75, 0.95);
+  padding: 2rem 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 59, 59, 0.4), inset 0 0 10px rgba(255, 59, 59, 0.2);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.signup-container h1 {
+  color: #ff3b3b;
+  font-size: 2rem;
+  font-weight: 800;
+  text-shadow: 0 0 8px #ff3b3b;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #d1d9efcc;
+  margin-bottom: 1.5rem;
+}
+
+/* Form styles */
+.signup-form .form-group {
+  margin-bottom: 1.2rem;
+  text-align: right;
+}
+
+.signup-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+  color: #ffdede;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: inset 0 0 5px rgba(255, 59, 59, 0.4);
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.signup-form input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 8px #ff3b3b, inset 0 0 8px #ff3b3b;
+}
+
+/* Button */
+.signup-btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  background: #ff3b3b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff3b3baa;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-btn:hover {
+  background: #ff6666;
+  box-shadow: 0 0 25px #ff6666bb;
+}
+
+/* Login link */
+.login-link {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.login-link a {
+  color: #ff3b3b;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  color: #ff6666;
+  text-shadow: 0 0 6px #ff6666;
+}
+</style>
+<body>
+
+  <div class="signup-container">
+    <h1>إنشاء حساب جديد</h1>
+    <p class="subtitle">انضم إلينا الآن وابدأ رحلتك</p>
+
+    <form action="#" method="POST" class="signup-form">
+      <div class="form-group">
+        <label for="username">اسم المستخدم</label>
+        <input type="text" id="username" name="username" placeholder="أدخل اسم المستخدم" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">كلمة المرور</label>
+        <input type="password" id="password" name="password" placeholder="••••••••" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-password">تأكيد كلمة المرور</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="••••••••" required>
+      </div>
+
+      <button type="submit" class="signup-btn">تسجيل</button>
+
+      <p class="login-link">لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></p>
+    </form>
+  </div>
+<!-- (your existing HTML/CSS unchanged above) -->
+<!-- ...existing markup... -->
+
+<script>
+/*
+  Signup behavior:
+  - Set FORMFEE_ENDPOINT to your Formee.io (or Formspree) endpoint URL to send submissions online.
+    Example: const FORMFEE_ENDPOINT = 'https://formee.io/f/abc123xyz';
+  - If FORMFEE_ENDPOINT is empty, data is stored locally in localStorage under key "cg_users".
+  - Passwords are NOT stored by this script (for security). Only name & email are saved/submitted.
+*/
+
+(function () {
+  const FORMFEE_ENDPOINT = 'https://formspree.io/f/xjkojoyp'; // <-- set to your Formee endpoint if you have one
+
+  // Helpers
+  function qs(sel, ctx = document) { return ctx.querySelector(sel); }
+  function el(tag, props = {}) { const e = document.createElement(tag); Object.assign(e, props); return e; }
+  function emailValid(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+  // Elements
+  const form = qs('.signup-form');
+  if (!form) return console.warn('Signup form not found.');
+  const submitBtn = form.querySelector('.signup-btn');
+  const inputName = qs('#username', form);
+  const inputEmail = qs('#email', form);
+  const inputPassword = qs('#password', form);
+  const inputConfirm = qs('#confirm-password', form);
+
+  // create accessible toast (so we don't change HTML)
+  const toast = el('div', { id: 'cg-toast', role: 'status', 'aria-live': 'polite' });
+  toast.style.cssText = [
+    'position:fixed',
+    'left:50%',
+    'transform:translateX(-50%)',
+    'bottom:20px',
+    'background:#222',
+    'color:#fff',
+    'padding:0.6rem 0.9rem',
+    'border-radius:8px',
+    'box-shadow:0 6px 18px rgba(0,0,0,0.5)',
+    'opacity:0',
+    'transition:opacity .2s',
+    'z-index:99999',
+    'pointer-events:none'
+  ].join(';');
+  document.body.appendChild(toast);
+  let toastTimer = null;
+  function showToast(msg, ms = 2500) {
+    if (toastTimer) clearTimeout(toastTimer);
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    toastTimer = setTimeout(() => { toast.style.opacity = '0'; }, ms);
+  }
+
+  // Local storage helpers
+  function readLocalUsers(){ try { return JSON.parse(localStorage.getItem('cg_users') || '[]'); } catch { return []; } }
+  function writeLocalUsers(arr){ localStorage.setItem('cg_users', JSON.stringify(arr)); }
+
+  function disableSubmit(state = true, textWhile = 'جارٍ التسجيل...') {
+    if (!submitBtn) return;
+    submitBtn.disabled = state;
+    submitBtn.style.opacity = state ? '0.7' : '1';
+    if (state) {
+      submitBtn.dataset.origText = submitBtn.textContent;
+      submitBtn.textContent = textWhile;
+    } else {
+      submitBtn.textContent = submitBtn.dataset.origText || submitBtn.textContent;
+    }
+  }
+
+  // Main submit handler
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+
+    const name = (inputName && inputName.value || '').trim();
+    const email = (inputEmail && inputEmail.value || '').trim();
+    const pass = (inputPassword && inputPassword.value || '');
+    const pass2 = (inputConfirm && inputConfirm.value || '');
+
+    // basic validation
+    if (!name || name.length < 2) {
+      showToast('الرجاء إدخال اسم صحيح (حرفان أو أكثر).');
+      inputName && inputName.focus();
+      return;
+    }
+    if (!email || !emailValid(email)) {
+      showToast('الرجاء إدخال بريد إلكتروني صالح.');
+      inputEmail && inputEmail.focus();
+      return;
+    }
+    if (!pass || pass.length < 6) {
+      showToast('كلمة المرور يجب أن تكون 6 أحرف على الأقل.');
+      inputPassword && inputPassword.focus();
+      return;
+    }
+    if (pass !== pass2) {
+      showToast('كلمتا المرور غير متطابقتين.');
+      inputConfirm && inputConfirm.focus();
+      return;
+    }
+
+    disableSubmit(true);
+
+    const payload = {
+      name,
+      email,
+      timestamp: new Date().toISOString(),
+      page: location.pathname
+    };
+
+    // If endpoint provided, try to POST to it (Formee or similar)
+    if (FORMFEE_ENDPOINT) {
+      try {
+        // Formee often accepts form-encoded body; use URLSearchParams
+        const body = new URLSearchParams(payload);
+        const resp = await fetch(FORMFEE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body
+        });
+        if (!resp.ok) {
+          // try to parse message
+          let text = await resp.text().catch(()=> '');
+          showToast('فشل إرسال البيانات الخادم: ' + (text || resp.status));
+          disableSubmit(false);
+          return;
+        }
+        showToast('تم التسجيل بنجاح — تم إرسال البيانات إلى النموذج.');
+        // clear inputs (but not passwords)
+        inputName.value = '';
+        inputEmail.value = '';
+        inputPassword.value = '';
+        inputConfirm.value = '';
+        setTimeout(()=> { location.href = 'login.html'; }, 1800);
+        return;
+      } catch (err) {
+        console.error('Submit error', err);
+        showToast('حدث خطأ أثناء إرسال النموذج. سيتم حفظ البيانات محليًا.');
+        // fallback to local
+      }
+    }
+
+    // Fallback: save locally (only name & email & timestamp). DO NOT store password locally.
+    try {
+      const users = readLocalUsers();
+      // prevent duplicate by email
+      if (users.some(u => u.email && u.email.toLowerCase() === email.toLowerCase())) {
+        showToast('هذا البريد مُسجّل بالفعل (محليًا). حاول تسجيل الدخول.');
+        disableSubmit(false);
+        return;
+      }
+      users.push({ name: payload.name, email: payload.email, createdAt: payload.timestamp, from: payload.page });
+      writeLocalUsers(users);
+      showToast('تم التسجيل محليًا بنجاح. يمكنك تسجيل الدخول الآن.');
+      // clear visible fields (NOT password security reason we already cleared)
+      inputName.value = '';
+      inputEmail.value = '';
+      inputPassword.value = '';
+      inputConfirm.value = '';
+      setTimeout(()=> { location.href = 'login.html'; }, 1800);
+    } catch (e) {
+      console.error('Local save error', e);
+      showToast('فشل حفظ البيانات محليًا.');
+    } finally {
+      disableSubmit(false);
+    }
+  });
+
+  // small UX: pressing Enter on last field triggers submit naturally; no extra handlers needed.
+
+  // Optional: Add basic client-side "show password" toggle by long press on password fields (non-invasive)
+  // (keeps markup unchanged). Not visible UI, just a convenience: hold Alt while focusing to toggle.
+  function togglePwdOnAlt(e) {
+    if (e.altKey && (e.type === 'keydown' && e.key === 'Alt')) return; // ignore plain alt
+  }
+  // not adding complex keyboard toggles to avoid changing UI or HTML.
+
+})();
+</script>
+</body>
+</html>

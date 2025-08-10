@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Log in — Your Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* === START: your original CSS (unchanged) === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #0a1b2a 0%, #112f4a 100%);
+      color: #e0e6f0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+
+    /* Signup container */
+    .signup-container {
+      background: rgba(20, 45, 75, 0.95);
+      padding: 2rem 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255, 59, 59, 0.4), inset 0 0 10px rgba(255, 59, 59, 0.2);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    .signup-container h1 {
+      color: #ff3b3b;
+      font-size: 2rem;
+      font-weight: 800;
+      text-shadow: 0 0 8px #ff3b3b;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #d1d9efcc;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Form styles */
+    .signup-form .form-group {
+      margin-bottom: 1.2rem;
+      text-align: right;
+    }
+
+    .signup-form label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+      color: #ffdede;
+    }
+
+    .signup-form input {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      border: none;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      box-shadow: inset 0 0 5px rgba(255, 59, 59, 0.4);
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .signup-form input:focus {
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 8px #ff3b3b, inset 0 0 8px #ff3b3b;
+    }
+
+    /* Button */
+    .signup-btn {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1.1rem;
+      font-weight: 800;
+      background: #ff3b3b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff3b3baa;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .signup-btn:hover {
+      background: #ff6666;
+      box-shadow: 0 0 25px #ff6666bb;
+    }
+
+    /* Login link */
+    .login-link {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .login-link a {
+      color: #ff3b3b;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .login-link a:hover {
+      color: #ff6666;
+      text-shadow: 0 0 6px #ff6666;
+    }
+
+    /* small status text */
+    .status {
+      margin-top: 0.9rem;
+      font-weight: 700;
+      display: none;
+    }
+    .status.ok { color: #bff7c7; }
+    .status.err { color: #ffb6b6; }
+
+    @media (max-width: 480px) {
+      .signup-container { padding: 1.3rem; }
+    }
+    /* === END: your original CSS (unchanged) === */
+  </style>
+</head>
+<body>
+  <!-- This uses your signup styles but is a login page (main page = new.html) -->
+  <div class="signup-container" role="main" aria-labelledby="loginTitle">
+    <h1 id="loginTitle">Log in</h1>
+    <p class="subtitle">Sign in to access your dashboard and saved projects.</p>
+
+    <!--
+      Replace the action URL below with your Formspree endpoint:
+      e.g. action="https://formspree.io/f/mnqlkyar"
+    -->
+    <form id="loginForm" class="signup-form" action="https://formspree.io/f/xjkojoyp" method="POST" autocomplete="on" novalidate>
+      <!-- Formspree prefers _replyto for user email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="_replyto" type="email" placeholder="you@school.edu" required autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="••••••••" required autocomplete="current-password">
+      </div>
+
+      <div class="form-group" style="text-align:left; margin-top:0.2rem;">
+        <label style="font-weight:700; color:#ffdede;">
+          <input id="remember" type="checkbox" name="remember" style="width:16px;height:16px;accent-color:#ff3b3b;">
+          <span style="margin-left:.5rem; font-weight:700; color:#d1d9efcc;">Remember me</span>
+        </label>
+      </div>
+
+      <!-- hidden helpers for Formspree -->
+      <input type="hidden" name="_subject" value="Login submission (demo)">
+      <!-- Set _next to a local thank-you page if you'd like -->
+      <input type="hidden" id="_next_input" name="_next" value="new.html">
+
+      <button id="submitBtn" class="signup-btn" type="submit">Log in</button>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+
+      <!-- If you still want a link to sign up -->
+      <div class="login-link" style="margin-top:1rem;">
+        <span style="color:#d1d9efcc;">Need an account?</span>
+        <a href="signup.html"> Create one</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Minimal Formspree AJAX submit. Replace form action with your endpoint.
+    (function(){
+      const form = document.getElementById('loginForm');
+      const statusEl = document.getElementById('status');
+      const submitBtn = document.getElementById('submitBtn');
+
+      const ENDPOINT = form.action; // e.g. https://formspree.io/f/yourFormId
+
+      function show(msg, ok=true){
+        statusEl.style.display = 'block';
+        statusEl.textContent = msg;
+        statusEl.className = 'status ' + (ok ? 'ok' : 'err');
+      }
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+
+        if (!email.value) { email.focus(); show('Please enter your email.', false); return; }
+        if (!password.value) { password.focus(); show('Please enter your password.', false); return; }
+
+        submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
+        show('Sending…', true);
+
+        // WARNING: Sending passwords to Formspree (third-party) is insecure.
+        // This example sends password for demo only. Avoid for real auth flows.
+        const payload = {
+          _replyto: email.value,
+          email: email.value,
+          password: password.value,
+          remember: document.getElementById('remember').checked ? 'yes' : 'no',
+          _subject: form.querySelector('input[name="_subject"]')?.value || 'Login submission (demo)',
+          _next: document.getElementById('_next_input')?.value || ''
+        };
+
+        try {
+          const res = await fetch(ENDPOINT, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          if (res.ok) {
+            show('Success — check your email (demo). Redirecting…', true);
+            const next = payload._next;
+            if (next) setTimeout(()=> window.location.href = next, 900);
+            else { submitBtn.disabled = false; submitBtn.textContent = 'Log in'; }
+          } else {
+            let data = null;
+            try { data = await res.json(); } catch {}
+            const msg = data && data.error ? data.error : `Submission failed (status ${res.status})`;
+            show(msg, false);
+            submitBtn.disabled = false; submitBtn.textContent = 'Log in';
+          }
+        } catch (err) {
+          show('Network error — please try again.', false);
+          submitBtn.disabled = false; submitBtn.textContent = 'Log in';
+          console.error(err);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

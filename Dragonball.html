@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>حلقات دراغون بول — Cartoon Galaxy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset + base */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Nunito',sans-serif;
+      background:linear-gradient(135deg,#0a1b2a 0%,#112f4a 100%);
+      color:#e0e6f0;
+      min-height:100vh;
+      line-height:1.6;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:1rem 1.5rem 3rem;
+    }
+    header {
+      background: rgba(10,27,42,0.9);
+      padding:1rem 2rem;
+      position:sticky; top:0; z-index:100;
+      width:100%; max-width:1200px; border-radius:10px;
+      box-shadow:0 0 20px rgba(255,59,59,0.3);
+      margin-bottom:2rem;
+    }
+    .navbar { display:flex; justify-content:space-between; align-items:center; }
+    .logo a {
+      color:#ff3b3b; font-size:1.9rem; font-weight:700; text-decoration:none;
+      letter-spacing:2px; text-shadow:0 0 8px #ff3b3b;
+    }
+    nav ul { list-style:none; display:flex; gap:1.7rem; }
+    nav a {
+      color:#cfd8f7; font-weight:600; text-decoration:none; font-size:1.1rem;
+      transition:color .3s; text-shadow:0 0 4px rgba(0,0,0,.4);
+    }
+    nav a:hover { color:#ff3b3b; text-shadow:0 0 12px #ff3b3b; }
+    .dropdown { position:relative; }
+    .dropdown-content {
+      position:absolute; top:110%; left:0; background:#1a2a52; width:650px; padding:.7rem 1rem; border-radius:10px;
+      display:none; grid-template-columns:repeat(3,1fr); gap:.75rem 1rem; z-index:10;
+      box-shadow:0 5px 15px rgba(255,59,59,.4);
+    }
+    .dropdown:hover .dropdown-content{ display:grid; }
+    .dropdown-content a{
+      color:#e0e6f0; font-weight:600; text-decoration:none; font-size:1rem;
+      padding:.5rem .7rem; border-radius:6px; background:rgba(255,59,59,.15);
+      text-align:center; box-shadow:0 0 4px rgba(255,59,59,.4);
+    }
+    .dropdown-content a:hover{
+      background:#ff3b3b; box-shadow:0 0 15px #ff3b3b; color:#fff;
+    }
+    .lists{
+      width:100%; max-width:1200px;
+      display:flex; gap:1rem; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;
+    }
+    .list-card{
+      background:rgba(20,45,75,0.92);
+      border-radius:12px;
+      padding:0.8rem;
+      min-width:260px;
+      flex:1 1 360px;
+      box-shadow:0 6px 18px rgba(0,0,0,.4);
+      margin-bottom:25px;
+    }
+    .list-card h3{ color:#ffb000; margin-bottom:.6rem; font-size:1.05rem }
+    .list-items{
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:.45rem;
+      max-height:200px;
+      overflow:auto;
+      padding-right:.3rem;
+    }
+    .list-items li{
+      display:flex; justify-content:space-between; align-items:center; gap:.5rem;
+      background:rgba(255,255,255,.02);
+      padding:.45rem .6rem;
+      border-radius:8px;
+    }
+    .list-items a{
+      color:#ffd;
+      text-decoration:none;
+      font-weight:600;
+    }
+    .list-items img {
+      width:56px; height:40px; object-fit:cover; border-radius:6px;
+    }
+    .list-items button{
+      background:transparent;
+      border:none;
+      color:#ff8b8b;
+      cursor:pointer;
+      font-size:1.2rem;
+      font-weight:800;
+    }
+    .episodes-container{
+      width:100%; max-width:1200px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.6rem;
+      margin-top:0.6rem;
+    }
+    .episode-card{
+      background:rgba(20,45,75,0.9);
+      border-radius:12px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      box-shadow:0 6px 18px rgba(0,0,0,.45);
+    }
+    .episode-card img{
+      width:100%; height:190px; object-fit:cover;
+    }
+    .episode-content{
+      padding:0.9rem;
+      display:flex;
+      flex-direction:column;
+      gap:.6rem;
+    }
+    .episode-number{
+      color:#ff3b3b; font-weight:800;
+    }
+    .episode-title{
+      color:#ff6b6b; font-weight:800; font-size:1.1rem;
+    }
+    .episode-description{
+      color:#d1d9efcc; font-weight:600; font-size:.98rem; line-height:1.3;
+    }
+    .card-row{
+      display:flex;
+      gap:.5rem;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:.6rem;
+    }
+    .watch-link{
+      background:#ff3b3b;
+      color:#fff;
+      padding:.45rem .7rem;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:800;
+      box-shadow:0 6px 18px rgba(255,59,59,.18);
+    }
+    .watch-link:hover{ background:#ff6060 }
+    .actions{
+      display:flex; gap:.45rem;
+    }
+    .action-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.45rem .6rem;
+      border-radius:8px;
+      border:2px solid #ffd89a;
+      background:transparent;
+      color:#ffd89a;
+      font-weight:700;
+      cursor:pointer;
+      user-select:none;
+    }
+    .action-btn[aria-pressed="true"]{
+      background:#ffd89a; color:#222;
+    }
+    .action-ico{
+      font-size:1rem; line-height:1;
+    }
+    footer{
+      width:100%; max-width:1200px;
+      text-align:center;
+      padding:1rem;
+      color:#bfc8e6;
+    }
+    .toast{
+      position:fixed; left:50%; transform:translateX(-50%);
+      bottom:18px;
+      background:#222;
+      padding:.6rem .9rem;
+      border-radius:8px;
+      color:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,.6);
+      opacity:0;
+      transition:opacity .25s;
+      z-index:9999;
+      pointer-events:none;
+    }
+    .toast.show{
+      opacity:1;
+      pointer-events:auto;
+    }
+    @media(max-width:700px){
+      .lists{ flex-direction:column }
+      .list-card{ flex:1 1 auto; width:100% }
+      .episode-card img{ height:160px }
+    }
+    
+    /* شارة الزمن داخل عناصر القوائم */
+.time-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background: rgba(0,0,0,0.28);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight:700;
+  color:#fff;
+  font-size:0.86rem;
+}
+.time-badge .time-ico { font-size:1rem; line-height:1; }
+.time-badge .time-text { opacity:0.95; }
+
+  </style>
+</head>
+<body>
+   <header>
+    <div class="navbar">
+      <div class="logo">
+        <a href="new.html">Cartoon Galaxy</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="new.html">الرئيسية</a></li>
+          <li class="dropdown">
+            <a href="#">الرسوم المتحركة وأنمي</a>
+            <div class="dropdown-content">
+              <a href="Dragonball.html">دراغون بول</a>
+              <a href="mystery.html">فريق الغموض</a>
+              <a href="hero.html">مدينة الأبطال</a>
+              <a href="Conan.html">المحقق كونان</a>
+              <a href="naruto.html">ناروتو</a>
+              <a href="one-piece.html">ون بيس</a>
+              <a href="attackontitan.html">هجوم العمالقة</a>
+              <a href="fullmetal.html">الكيميائي المعدني الكامل</a>
+              <a href="deathnote.html">مذكرة الموت</a>
+              <a href="bleach.html">بليتش</a>
+              <a href="demonslayer.html">قاتل الشياطين</a>
+              <a href="mha.html">أكاديمية بطلي</a>
+              <a href="jojo.html">مغامرة جوجو الغريبة</a>
+              <a href="spiritedaway.html">الرحلة الروحية</a>
+              <a href="ghibli.html">استوديو غيبلي الكلاسيكي</a>
+              <a href="spongebob.html">سبونجبوب سكوير بانتس</a>
+              <a href="simpsons.html">عائلة سمبسون</a>
+              <a href="tomjerry.html">توم وجيري</a>
+              <a href="looneytunes.html">لوني تونز</a>
+              <a href="pokemon.html">بوكيمون (كرتون)</a>
+              <a href="teentitans.html">تيين تيتانز جو!</a>
+              <a href="adventuretime.html">وقت المغامرة</a>
+            </div>
+          </li>
+          <li><a href="#newsletter">النشرة الإخبارية</a></li>
+          <li><a href="login.html">تسجيل الدخول</a></li>
+          <li><a href="signup.html">إنشاء حساب</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<!-- Favorite & Watch Later Lists -->
+<div class="lists" aria-live="polite">
+  <section id="favorites" class="list-card" aria-label="قائمة المفضلات">
+    <h3>قائمة المفضلات <span id="fav-count">(0)</span></h3>
+    <ul id="fav-list" class="list-items" aria-label="عناصر المفضلات">
+      <li class="list-empty">لم تضف أي حلقة إلى المفضلات بعد.</li>
+    </ul>
+    <div style="margin-top:.6rem;display:flex;gap:.5rem;justify-content:flex-start">
+      <button id="clear-fav" class="action-btn" aria-label="مسح المفضلات">مسح المفضلات</button>
+    </div>
+  </section>
+
+  <section id="watchlater" class="list-card" aria-label="قائمة المشاهدة لاحقًا">
+    <h3>قائمة المشاهدة لاحقًا <span id="wl-count">(0)</span></h3>
+    <ul id="wl-list" class="list-items" aria-label="عناصر المشاهدة لاحقًا">
+      <li class="list-empty">لم تضف أي حلقة إلى قائمة المشاهدة لاحقًا بعد.</li>
+    </ul>
+    <div style="margin-top:.6rem;display:flex;gap:.5rem;justify-content:flex-start">
+      <button id="clear-wl" class="action-btn" aria-label="مسح قائمة المشاهدة لاحقًا">مسح القائمة</button>
+    </div>
+  </section>
+</div>
+
+<!-- Episodes Grid (example with 3 episodes) -->
+<section class="episodes-container" aria-label="قائمة الحلقات">
+  <article class="episode-card" data-ep-id="ep1" data-ep-title="سر كرات التنين" data-ep-link="Dep1.html?video=Dep1.mp4">
+    <img src="thumbnail1.jpg" alt="الحلقة 1 — سر كرات التنين" />
+    <div class="episode-content">
+      <div class="episode-number">الحلقة 1</div>
+      <div class="episode-title">سر كرات التنين</div>
+      <div class="episode-description">يلتقي غوكو الشاب ببلما، التي تبحث عن كرات التنين السبع. معًا يبدأان مغامرة للعثور عليها.</div>
+      <div class="card-row">
+        <a class="watch-link" href="Dep1.html?video=Dep1.mp4" target="_blank" rel="noopener noreferrer" aria-label="شاهد الحلقة 1">شاهد الآن</a>
+        <div class="actions" role="group" aria-label="خيارات الحلقة 1">
+          <button class="action-btn fav-btn" data-ep-id="ep1" aria-pressed="false" title="أضف إلى المفضلات">
+            <span class="action-ico">☆</span><span class="label"> مفضلة</span>
+          </button>
+          <button class="action-btn wl-btn" data-ep-id="ep1" aria-pressed="false" title="أضف للمشاهدة لاحقًا">
+            <span class="action-ico">⏱</span><span class="label"> لاحقاً</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="episode-card" data-ep-id="ep2" data-ep-title="مهمة الإمبراطور بيلاف" data-ep-link="Dep2.html?video=Dep2.mp4">
+    <img src="thumbnail1.jpg" alt="الحلقة 2 — مهمة الإمبراطور بيلاف" />
+    <div class="episode-content">
+      <div class="episode-number">الحلقة 2</div>
+      <div class="episode-title">مهمة الإمبراطور بيلاف</div>
+      <div class="episode-description">سون غوكو وبولما يلتقيان بعمال الإمبراطور بيلاف لأول مرة.</div>
+      <div class="card-row">
+        <a class="watch-link" href="Dep2.html?video=Dep2.mp4" target="_blank" rel="noopener noreferrer" aria-label="شاهد الحلقة 2">شاهد الآن</a>
+        <div class="actions" role="group" aria-label="خيارات الحلقة 2">
+          <button class="action-btn fav-btn" data-ep-id="ep2" aria-pressed="false" title="أضف إلى المفضلات">
+            <span class="action-ico">☆</span><span class="label"> مفضلة</span>
+          </button>
+          <button class="action-btn wl-btn" data-ep-id="ep2" aria-pressed="false" title="أضف للمشاهدة لاحقًا">
+            <span class="action-ico">⏱</span><span class="label"> لاحقاً</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="episode-card" data-ep-id="ep3" data-ep-title="سحابة النيمبوس لسون غوكو" data-ep-link="Dep3.html?video=Dep3.mp4">
+    <img src="thumbnail1.jpg" alt="الحلقة 3 — سحابة النيمبوس" />
+<div class="episode-content">
+  <div class="episode-number">الحلقة 3</div>
+  <div class="episode-title">غوكو وبيكولو ضد راديتس</div>
+  <div class="episode-description">
+    يتحد غوكو مع بيكولو لمواجهة راديتس في معركة مصيرية. يستخدم بيكولو تقنيته القاتلة بينما يضحي غوكو بنفسه لإنقاذ الأرض.
+  </div>
+      <div class="card-row">
+        <a class="watch-link" href="Dep3.html?video=Dep3.mp4" target="_blank" rel="noopener noreferrer" aria-label="شاهد الحلقة 3">شاهد الآن</a>
+        <div class="actions" role="group" aria-label="خيارات الحلقة 3">
+          <button class="action-btn fav-btn" data-ep-id="ep3" aria-pressed="false" title="أضف إلى المفضلات">
+            <span class="action-ico">☆</span><span class="label"> مفضلة</span>
+          </button>
+          <button class="action-btn wl-btn" data-ep-id="ep3" aria-pressed="false" title="أضف للمشاهدة لاحقًا">
+            <span class="action-ico">⏱</span><span class="label"> لاحقاً</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<footer>© 2025 Cartoon Galaxy</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- UNIVERSAL FAVORITES & WATCH LATER SCRIPT -->
+<script>
+(() => {
+  const FAV_KEY = 'cb_favorites';
+  const WL_KEY = 'cb_watchlater';
+
+  // storage helpers
+  function read(key){ try{ return JSON.parse(localStorage.getItem(key)||'[]'); }catch{return [];} }
+  function write(key, arr){ try{ localStorage.setItem(key, JSON.stringify(arr)); }catch{} }
+
+  function normalize(str = '') {
+    return String(str).trim().toLowerCase().replace(/[\u064B-\u065F\s\W_]+/g,''); // remove Arabic diacritics, spaces & non-alnum
+  }
+
+  // get data from a card element
+  function getEpisodeDataFromCard(card){
+    const id = card.dataset.epId || card.dataset.epLink || ('ep_' + Math.random().toString(36).slice(2,9));
+    const title = card.dataset.epTitle || (card.querySelector('.episode-title')?.textContent || 'حلقة').trim();
+    const url = card.dataset.epLink || '#';
+    const thumb = card.querySelector('img') ? card.querySelector('img').src : '';
+    const duration = card.dataset.epDuration || (card.querySelector('.duration')?.textContent || '');
+    return { id: String(id), title: String(title), url, thumbnail: thumb, duration };
+  }
+
+  // attempt to find thumbnail for a stored entry by matching page cards
+  function resolveThumbnailFromPage(storedEp){
+    if (!storedEp) return '';
+    // 1) try exact id match (data-ep-id)
+    if (storedEp.id) {
+      const byId = document.querySelector('.episode-card[data-ep-id="'+ storedEp.id +'"] img');
+      if (byId && byId.src) return byId.src;
+    }
+    // 2) try match by normalized title
+    if (storedEp.title) {
+      const targetNorm = normalize(storedEp.title);
+      const cards = document.querySelectorAll('.episode-card');
+      for (const c of cards) {
+        const titleText = (c.dataset.epTitle || c.querySelector('.episode-title')?.textContent || '').trim();
+        if (titleText && normalize(titleText) === targetNorm) {
+          const img = c.querySelector('img');
+          if (img && img.src) return img.src;
+        }
+      }
+    }
+    // 3) fallback to stored thumbnail if present
+    return storedEp.thumbnail || '';
+  }
+
+  // toggle item in list
+  function toggleItem(listKey, item){
+    const list = read(listKey);
+    const idx = list.findIndex(e=>e.id===item.id);
+    if (idx===-1){ list.push(item); write(listKey,list); return true; }
+    list.splice(idx,1); write(listKey,list); return false;
+  }
+  function isInList(listKey,id){ return read(listKey).some(e=>e.id===id); }
+
+  // toast
+  let toastT;
+  function showToast(msg){
+    const t = document.getElementById('toast'); if(!t) return;
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastT); toastT = setTimeout(()=> t.classList.remove('show'),2200);
+  }
+
+  // render list with thumbnail resolved from page
+  function renderList(key, ulId, emptyMsg){
+    const list = read(key);
+    const ul = document.getElementById(ulId); if(!ul) return;
+    ul.innerHTML = '';
+    if (list.length === 0){
+      const li = document.createElement('li'); li.className='list-empty'; li.textContent = emptyMsg; ul.appendChild(li); return;
+    }
+
+    list.forEach(storedEp => {
+      const li = document.createElement('li');
+      li.style.display='flex'; li.style.alignItems='center'; li.style.gap='0.6rem';
+
+      const thumbSrc = resolveThumbnailFromPage(storedEp);
+
+      if (thumbSrc) {
+        const img = document.createElement('img');
+        img.src = thumbSrc;
+        img.width = 56; img.height = 40;
+        img.alt = storedEp.title + ' - صورة مصغرة';
+        img.style.borderRadius = '6px';
+        li.appendChild(img);
+      } else {
+        const box = document.createElement('div');
+        box.style.width='56px'; box.style.height='40px'; box.style.borderRadius='6px';
+        box.style.background='rgba(255,255,255,0.03)';
+        li.appendChild(box);
+      }
+
+      const metaWrap = document.createElement('div');
+      metaWrap.style.display='flex'; metaWrap.style.flexDirection='column'; metaWrap.style.gap='4px'; metaWrap.style.flex='1 1 auto';
+
+      const a = document.createElement('a');
+      a.href = storedEp.url || '#';
+      a.textContent = storedEp.title;
+      a.target = '_blank'; a.rel = 'noopener noreferrer';
+      metaWrap.appendChild(a);
+
+      // If there's duration in stored data, show small time badge — but prefer data from page card if available
+      const duration = (function(){
+        // attempt to read duration from page card if exists
+        const card = document.querySelector('.episode-card[data-ep-id="'+storedEp.id+'"]');
+        if (card && (card.dataset.epDuration || card.querySelector('.duration')?.textContent)) {
+          return card.dataset.epDuration || card.querySelector('.duration')?.textContent.trim();
+        }
+        return storedEp.duration || '';
+      })();
+
+      if (duration) {
+        const timeRow = document.createElement('div');
+        timeRow.style.display='flex'; timeRow.style.alignItems='center'; timeRow.style.gap='0.45rem';
+        const timeBadge = document.createElement('span');
+        timeBadge.className='time-badge';
+        timeBadge.innerHTML = `<span class="time-ico" aria-hidden="true">⏱</span><span class="time-text">${duration}</span>`;
+        timeRow.appendChild(timeBadge);
+        metaWrap.appendChild(timeRow);
+      }
+
+      li.appendChild(metaWrap);
+
+      const btn = document.createElement('button');
+      btn.type='button'; btn.className='action-btn'; btn.title='حذف من القائمة'; btn.setAttribute('aria-label', `حذف ${storedEp.title} من القائمة`);
+      btn.textContent='×'; btn.style.flex='0 0 auto';
+      btn.addEventListener('click', ()=>{
+        const cur = read(key); const idx = cur.findIndex(e=>e.id===storedEp.id);
+        if (idx!==-1){ cur.splice(idx,1); write(key,cur); renderList(key,ulId,emptyMsg); updateAllButtons(); showToast(`تم حذف "${storedEp.title}"`); }
+      });
+
+      li.appendChild(btn);
+      ul.appendChild(li);
+    });
+  }
+
+  function updateCounts(){
+    const favCount = document.getElementById('fav-count'); const wlCount = document.getElementById('wl-count');
+    if(favCount) favCount.textContent = `(${read(FAV_KEY).length})`;
+    if(wlCount) wlCount.textContent = `(${read(WL_KEY).length})`;
+  }
+
+  function updateAllButtons(){
+    document.querySelectorAll('.fav-btn').forEach(btn => { const id = btn.dataset.epId; btn.setAttribute('aria-pressed', isInList(FAV_KEY,id)); });
+    document.querySelectorAll('.wl-btn').forEach(btn => { const id = btn.dataset.epId; btn.setAttribute('aria-pressed', isInList(WL_KEY,id)); });
+    updateCounts();
+  }
+
+  // Setup episode-card buttons: when adding, capture card thumbnail & duration
+  function setupEpisodeButtons(){
+    document.querySelectorAll('.episode-card').forEach(card => {
+      const ep = getEpisodeDataFromCard(card);
+      const fav = card.querySelector('.fav-btn');
+      if (fav) {
+        fav.dataset.epId = ep.id;
+        fav.onclick = () => {
+          // store current card thumbnail and duration
+          const item = Object.assign({}, ep, { thumbnail: ep.thumbnail, duration: ep.duration });
+          const added = toggleItem(FAV_KEY, item);
+          updateAllButtons();
+          showToast(added ? `"${ep.title}" أضيف إلى المفضلات` : `"${ep.title}" حُذف من المفضلات`);
+        };
+      }
+      const wl = card.querySelector('.wl-btn');
+      if (wl) {
+        wl.dataset.epId = ep.id;
+        wl.onclick = () => {
+          const item = Object.assign({}, ep, { thumbnail: ep.thumbnail, duration: ep.duration });
+          const added = toggleItem(WL_KEY, item);
+          updateAllButtons();
+          showToast(added ? `"${ep.title}" أضيف للمشاهدة لاحقًا` : `"${ep.title}" حُذف من المشاهدة لاحقًا`);
+        };
+      }
+    });
+
+    // helper used above, defined locally to keep scope clean
+    function getEpisodeDataFromCard(card){
+      const id = card.dataset.epId || ('ep_' + Math.random().toString(36).slice(2,9));
+      const title = card.dataset.epTitle || (card.querySelector('.episode-title')?.textContent || 'حلقة');
+      const url = card.dataset.epLink || '#';
+      const thumb = card.querySelector('img') ? card.querySelector('img').src : '';
+      const duration = card.dataset.epDuration || (card.querySelector('.duration')?.textContent || '');
+      return { id: String(id), title: String(title).trim(), url, thumbnail: thumb, duration };
+    }
+  }
+
+  function setupClearButtons(){
+    const clearFav = document.getElementById('clear-fav');
+    if (clearFav) clearFav.addEventListener('click', ()=>{
+      if(confirm('هل أنت متأكد من مسح قائمة المفضلات؟')){ localStorage.removeItem(FAV_KEY); renderList(FAV_KEY,'fav-list','لم تضف أي حلقة إلى المفضلات بعد.'); updateAllButtons(); showToast('تم مسح المفضلات'); }
+    });
+    const clearWl = document.getElementById('clear-wl');
+    if (clearWl) clearWl.addEventListener('click', ()=>{
+      if(confirm('هل أنت متأكد من مسح قائمة المشاهدة لاحقًا؟')){ localStorage.removeItem(WL_KEY); renderList(WL_KEY,'wl-list','لم تضف أي حلقة إلى قائمة المشاهدة لاحقًا بعد.'); updateAllButtons(); showToast('تم مسح القائمة'); }
+    });
+  }
+
+  // init
+  function init(){
+    renderList(FAV_KEY,'fav-list','لم تضف أي حلقة إلى المفضلات بعد.');
+    renderList(WL_KEY,'wl-list','لم تضف أي حلقة إلى قائمة المشاهدة لاحقًا بعد.');
+    setupEpisodeButtons();
+    setupClearButtons();
+    updateAllButtons();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+
+})();
+</script>
+
+
+</body>
+</html>
